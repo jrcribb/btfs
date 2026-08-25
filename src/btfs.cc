@@ -792,7 +792,7 @@ populate_target(std::string& target, char *arg, const std::string& name) {
 		templ += getenv("HOME");
 		templ += "/btfs";
 	} else {
-		templ += "/tmp/btfs";
+		RETV(fprintf(stderr, "Failed to find target directory\n"), false);
 	}
 
 	if (mkdir(templ.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) < 0) {
